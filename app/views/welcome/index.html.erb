@@ -1,0 +1,19 @@
+<%= render partial:'shared/banners' %>
+<section id="torrents">
+  <div class="container">
+    <div class="row">
+      <% @torrents.each do |item| %>
+        <div class="col-sm-3 bit-item">
+          <div class="bit-info">
+            <a href="<%= download_path(item.id) %>" class="code"><%= item.short_name %></a>
+            <hr style="margin:5px 5px 5px -5px;">
+            <a href="<%= download_path(item.id) %>"><%= item.full_name %></</a>
+          </div>
+          <div class="cover">
+            <img src="<%= display_cover(item.cover) %>">
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<%= content_for(:title,  '编辑更新文件 | Koogle') %>
+<section class="content-header">
+  <h1>
+    <%= @directory.name %><small>编辑种子</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 目录管理</a></li>
+    <li><i class="fa fa-folder"></i> <%= @directory.name %></li>
+    <li class="active"><i class="fa fa-edit"></i> 编辑种子</li>
+  </ol>
+</section>
+<section class="content">
+  <div style="padding-top: 10px">
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title"><%= @directory.name %>编辑表单</h3>
+      </div>
+      <%= render 'form' %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<%= form_for(['nonage',@directory]) do |f| %>
+<div class="box-body">
+  <div class="col-md-4">
+    <div class="form-group has-success">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="glyphicon glyphicon-link"></i>
+        </div>
+        <%= f.text_field :cover, class:'form-control', placeholder:'（必填* 目录封面链接）' %>
+      </div>
+      <img id="coverpre" src="<%= @directory.cover %>" style="max-width: 100%;padding-top: 10px"/>
+    </div>
+    <div class="form-group has-success">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-image"></i>
+        </div>
+        <%= f.file_field :cover_file, class:'form-control', accept:'.jpg,.png,.jpeg', onChange:"addFileUlr(this,'coverpre')" %>
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-folder"></i>
+        </div>
+        <%= f.hidden_field :user_id, value:"#{current_user.id}" %>
+        <%= f.text_field :name, class:'form-control', placeholder:'（必填* 栏目展示名称）' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <hr>
+    <div>
+      <button type="submit" class="btn bg-maroon btn-flat" style="width: 120px">提交</button>
+      <a href="<%= nonage_user_directories_path %>" class="btn bg-navy btn-flat" style="width: 120px">取消</a>
+    </div>
+  </div>
+</div>
+<% end %>

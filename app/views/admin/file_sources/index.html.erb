@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing File Sources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>File type</th>
+      <th>File size</th>
+      <th>File md5</th>
+      <th>File path</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @file_sources.each do |file_source| %>
+      <tr>
+        <td><%= file_source.file_name %></td>
+        <td><%= file_source.file_type %></td>
+        <td><%= file_source.file_size %></td>
+        <td><%= file_source.file_md5 %></td>
+        <td><%= file_source.file_path %></td>
+        <td><%= link_to 'Show', file_source %></td>
+        <td><%= link_to 'Edit', edit_file_source_path(file_source) %></td>
+        <td><%= link_to 'Destroy', file_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New File source', new_file_source_path %>

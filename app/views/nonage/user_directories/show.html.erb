@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_directory.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user_directory.name %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @user_directory.parent_id %>
+</p>
+
+<p>
+  <strong>Cover:</strong>
+  <%= @user_directory.cover %>
+</p>
+
+<%= link_to 'Edit', edit_user_directory_path(@user_directory) %> |
+<%= link_to 'Back', user_directories_path %>

@@ -1,0 +1,67 @@
+<section class="content-header">
+  <h1>
+    UserBoard
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Dashboard</li>
+  </ol>
+</section>
+<section class="content">
+  <!-- Small boxes (Stat box) -->
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-teal">
+        <div class="inner">
+          <h3>0<%= UserDirectory.where(user_id:current_user.id).count %></h3>
+          <p>Directory</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-folder"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-red">
+        <div class="inner">
+          <h3>0<%= UserFile.where(user_id:current_user.id).count %></h3>
+          <p>Torrent</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-leaf"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-light-blue">
+        <div class="inner">
+          <h3><%= current_user.sign_in_count %></h3>
+          <p>UserSign</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-beer"></i>
+        </div>
+        <a href="#" class="small-box-footer"><i class="fa fa-sitemap"></i><%= current_user.current_sign_in_ip %></a>
+      </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-green">
+        <div class="inner">
+          <h3>0<%#= Cloud.count %></h3>
+          <p>Downloads</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-android-download"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>

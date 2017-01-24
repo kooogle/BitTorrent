@@ -1,0 +1,61 @@
+<%= form_for(['nonage',@directory,@file]) do |f| %>
+<div class="box-body">
+  <div class="col-md-4">
+    <div class="form-group has-warning">
+      <label>种子文件</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-asterisk"></i>
+        </div>
+        <%= f.file_field :torrent_file, class:'form-control', accept:'.torrent' %>
+      </div>
+    </div>
+    <div class="form-group has-warning">
+      <label>识别码</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-bell-o"></i>
+        </div>
+        <%= f.hidden_field :user_id, value:current_user.id %>
+        <%= f.hidden_field :directory_id, value:@directory.id %>
+        <%= f.text_field :short_name, :class => 'form-control', placeholder:'(选填)* ' %>
+      </div>
+    </div>
+    <div class="form-group has-warning">
+      <label>名称</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-bell"></i>
+        </div>
+        <%= f.text_field :full_name, :class => 'form-control', placeholder:'(必填)* ' %>
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label>封面路径</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="glyphicon glyphicon-link"></i>
+        </div>
+        <%= f.text_field :cover, class:'form-control', placeholder:'(选填)*' %>
+      </div>
+      <img id="imgpre" src="<%= local_cover @file.cover %>" style="max-width: 100%;padding-top: 10px"/>
+    </div>
+    <div class="form-group has-success">
+      <label>封面文件</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-image"></i>
+        </div>
+        <%= f.file_field :photo_file, class:'form-control', accept:'.jpg,.png,.jpeg,.gif', onChange:"addFileUlr(this,'imgpre')"%>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <hr>
+    <div>
+      <button type="submit" class="btn bg-maroon btn-flat" style="width: 120px">提交</button>
+      <a href="<%= nonage_directory_path(@directory.id) %>" class="btn bg-navy btn-flat" style="width: 120px">取消</a>
+    </div>
+  </div>
+</div>
+<% end %>

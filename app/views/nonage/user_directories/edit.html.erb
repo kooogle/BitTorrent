@@ -1,0 +1,21 @@
+<%= content_for(:title,  '编辑目录 | BitTorrent') %>
+<section class="content-header">
+  <h1>
+    编辑目录
+    <small>「<%= @directory.name %>」</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 目录管理</a></li>
+    <li><i class="glyphicon glyphicon-edit"></i> 编辑目录</li>
+  </ol>
+</section>
+<section class="content">
+  <div style="padding-top: 10px">
+    <div class="box box-warning">
+      <div class="box-header">
+        <h3 class="box-title">编辑目录表单</h3>
+      </div>
+      <%= render 'form' %>
+    </div>
+  </div>
+</section>

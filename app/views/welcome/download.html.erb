@@ -1,0 +1,40 @@
+<%= content_for(:title, '下载文件 | BitTorrent') %>
+<section id="user-profile">
+  <div>
+    <div class="user-avatar">
+      <img src="<%= display_avatar(@user) %>">
+    </div>
+    <div class="user-banner">
+      <img src="<%= display_banner(@user) %>">
+    </div>
+  </div>
+</section>
+<section id="file-download">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="user-info">
+          <div class="info">
+            <p><i class="ion ion-person"></i> <%= @user.nick_name %></p>
+            <p><i class="ion ion-home"></i> <a href=""><%= @user.email.split("@")[0]%></a></p>
+            <p><i class="ion ion-calendar"></i> 加入于<%= @user.created_at.strftime('%Y年%m月') %></p>
+            <p><i class="ion ion-android-pin"></i> <%= @user.current_sign_in_ip %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="file-info">
+          <p class="title"><%= @file.full_name %></p>
+          <hr style="margin-top: -5px;">
+          <p><img src="<%= display_bit_cover(@file.cover) %>"></p>
+          <p> 文件编号 ：<%= @file.short_name %></p>
+          <p> 下载统计 ：<%= @file.down_count %></p>
+          <hr style="margin-top: -5px;">
+          <div class="btn-down">
+            <a href="<%= download_count_path(params[:id]) %>" class="btn btn-success"><i class="ion ion-arrow-down-a"></i> DownLoad</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

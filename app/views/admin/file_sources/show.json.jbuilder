@@ -1,0 +1,1 @@
+json.partial! "file_sources/file_source", file_source: @file_source

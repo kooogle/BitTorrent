@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: root
+
+development:
+  <<: *default
+  database: BitTorrent_development
+
+test:
+  <<: *default
+  database: BitTorrent_test
+
+production:
+  <<: *default
+  database: BitTorrent_production
+  username: BitTorrent
+  password: <%= ENV['BITTORRENT_DATABASE_PASSWORD'] %>
