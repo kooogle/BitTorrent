@@ -17,6 +17,7 @@ gem 'faraday', '0.9.2'
 gem 'to_xls-rails','1.3.1'
 gem 'will_paginate','3.1.5'
 gem 'cancancan','1.15.0'
+gem 'puma','3.6.2'
 
 group :development do
   gem 'spring', '2.0.0' # bin/bundle exec spring binstub --all
