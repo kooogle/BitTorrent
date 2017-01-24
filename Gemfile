@@ -1,4 +1,5 @@
-source 'https://gems.ruby-china.org'
+# source 'https://gems.ruby-china.org/'
+source 'https://rubygems.org/'
 
 gem 'rails', '4.2.7.1'
 gem 'mysql2', '0.4.5'
