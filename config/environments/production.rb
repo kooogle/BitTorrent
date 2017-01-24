@@ -12,13 +12,21 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
+
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
-  # config.action_dispatch.rack_cache = true
+
+  # config.action_dispatch.rack_cache = {
+  #   :metastore    => "file:/var/cache/video/meta",
+  #   :entitystore  => "file:/var/cache/video/body",
+  #   :allow_reload => false # very changed
+  # }
+
+  # config.static_cache_control = "public, max-age=2592000" # changed
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -26,6 +34,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
+
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -39,23 +48,32 @@ Rails.application.configure do
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  #config.force_ssl = true
+
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
 
-  # Prepend all log lines with the following tags.
-  # config.log_tags = [ :subdomain, :uuid ]
+  config.log_tags = [ :subdomain]
+
+  config.lograge.enabled = true
+
+  # add time to lograge
+  config.lograge.custom_options = lambda do |event|
+    {:time => event.time}
+  end
 
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :memory_store,{ size: 64.megabytes }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -71,9 +89,8 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
-
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: Settings.host }
 end
