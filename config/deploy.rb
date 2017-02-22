@@ -30,6 +30,7 @@ set :linked_dirs, %w{
   tmp/pids
   tmp/sockets
   public/storage
+  public/downloads
 }
 
 namespace :deploy do
