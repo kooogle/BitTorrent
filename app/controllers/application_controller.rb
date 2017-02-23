@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
   def allow_page_caching
-    expires_in(5.minutes) unless Rails.env.development?
+    expires_in(5.minutes, public: true) unless Rails.env.development?
   end
 
 end
