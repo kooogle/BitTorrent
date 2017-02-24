@@ -274,7 +274,7 @@ i.icon_pull {
 
 .search {
   transition: width 1s;
-  line-height: 47px;
+  line-height: 46px;
   font-size: 25px;
   padding-left: 30px;
   border:0;
@@ -288,7 +288,7 @@ i.icon_pull {
 .serach_form:hover > .search{
   transition: width 1s;
   width: 500px;
-  border-bottom:#ffffff 1px solid;
+  border-bottom:#ffffff 2px solid;
 }
 
 .searc_sub {
