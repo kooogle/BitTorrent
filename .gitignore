@@ -17,5 +17,5 @@
 /.rvmrc
 /.idea/
 /.DS_Store
-/public/uploads/*
 /public/assets
+/public/storage/*

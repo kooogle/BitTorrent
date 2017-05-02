@@ -16,6 +16,10 @@ class Nonage::UserDirectoriesController < Nonage::BaseController
   end
 
   def create
+    if params[:user_directory][:cover_file].present?
+      cover = FileSource.save_file(params[:user_directory][:cover_file])
+      params[:user_directory][:cover] = cover.file_path
+    end
     @directory = UserDirectory.new(user_directory_params)
     if @directory.save
       redirect_to nonage_user_directories_path, notice: 'User directory was successfully created.'
@@ -25,6 +29,10 @@ class Nonage::UserDirectoriesController < Nonage::BaseController
   end
 
   def update
+    if params[:user_directory][:cover_file].present?
+      cover = FileSource.save_file(params[:user_directory][:cover_file])
+      params[:user_directory][:cover] = cover.file_path
+    end
     if @user_directory.update(user_directory_params)
       redirect_to nonage_user_directories_path, notice: 'User directory was successfully updated.'
     else
